@@ -1,0 +1,7 @@
+api/.env
+server-files/
+
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
