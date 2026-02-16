@@ -100,12 +100,7 @@ PRIMARY KEY (`ID`)
 3. Return JSON responses and handle error cases consistently.
 
 ## How to Access the Application
-Go to the website by using the domain name [http://](http://cop4331-lincoln.xyz/)
-
-```bash
-sudo systemctl status apache2
-sudo systemctl status mysql
-```
+Go to the website by using the domain name http://cop4331-lincoln.xyz/
 
 ## Assumptions, Limitations, and AI Usage
 - **Assumptions:** Ubuntu-based DigitalOcean droplet, Apache/MySQL/PHP installed via apt packages.
