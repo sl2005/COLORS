@@ -16,7 +16,7 @@ This repository documents and supports the first three project labs:
 
 ## Repository Structure
 - **api/**: PHP backend API endpoints and DB configuration.
-- **frontend/**: Frontend application files (`index.html`, `color.html`, CSS, JS, images).
+- **public/**: Frontend application files (`index.html`, `color.html`, CSS, JS, images).
 - **README.md**: Project documentation.
 - **LICENSE.md**: Open-source license.
 - **.gitignore**: Excluded local/secrets/system files.
@@ -107,7 +107,7 @@ PRIMARY KEY (`ID`)
 3. Return JSON responses and handle error cases consistently.
 
 ## How to Access the Application
-Deploy `frontend/` as your web root (for example, copy contents to `/var/www/html`) and place `api/` under `/var/www/html/api`.
+Deploy `public/` as your web root (for example, copy contents to `/var/www/html`) and place `api/` under `/var/www/html/api`.
 
 Go to the website by using the domain name http://cop4331-lincoln.xyz/
 
