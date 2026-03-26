@@ -1,0 +1,67 @@
+@startuml Activity Diagram
+title COLORS Web Application - Activity Diagram
+
+start
+
+:User navigates to index.html;
+
+:User enters username and password;
+
+:User clicks "Do It" (Login) button;
+
+:doLogin() sends POST /api/Login.php
+with {login, password};
+
+:Server queries Users table
+for matching credentials;
+
+if (Credentials valid?) then (yes)
+    :Server returns {id, firstName, lastName};
+    :saveCookie() stores session
+    (expires in 20 minutes);
+    :Redirect to color.html;
+    :readCookie() loads session data;
+
+    repeat
+        if (User action?) then (Search Color)
+            :User enters search term;
+            :User clicks "Search Color" button;
+            :searchColor() sends POST
+            /api/SearchColors.php
+            with {search, userId};
+            :Server queries Colors table
+            WHERE Name LIKE "%term%"
+            AND UserID = userId;
+            if (Colors found?) then (yes)
+                :Display matching
+                color list;
+            else (no)
+                :Display "No Records Found";
+            endif
+
+        else (Add Color)
+            :User enters color name;
+            :User clicks "Add Color" button;
+            :addColor() sends POST
+            /api/AddColor.php
+            with {color, userId};
+            :Server inserts color
+            into Colors table;
+            :Display "Color has been added";
+        endif
+    repeat while (User clicks Logout?) is (no)
+
+    :doLogout() clears session variables;
+    :Delete cookie (set expired);
+    :Redirect to index.html;
+
+else (no)
+    :Server returns error
+    "No Records Found";
+    :Display "User/Password
+    combination incorrect";
+endif
+
+stop
+
+@enduml

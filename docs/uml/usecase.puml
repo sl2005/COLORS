@@ -1,0 +1,52 @@
+@startuml Use Case Diagram
+left to right direction
+skinparam packageStyle rectangle
+
+title COLORS Web Application - Use Case Diagram
+
+actor "User" as user
+
+rectangle "COLORS Web Application" {
+    usecase "Login" as UC1
+    usecase "Logout" as UC2
+    usecase "Add Color" as UC3
+    usecase "Search Colors" as UC4
+    usecase "View Color Results" as UC5
+    usecase "Manage Session\n(Cookie)" as UC6
+}
+
+database "MySQL\nDatabase" as db
+
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+
+UC4 ..> UC5 : <<include>>
+UC1 ..> UC6 : <<include>>
+UC2 ..> UC6 : <<include>>
+
+UC1 --> db
+UC3 --> db
+UC4 --> db
+
+note right of UC1
+  User enters login credentials.
+  System validates against Users table.
+  On success, a session cookie is saved
+  and user is redirected to color.html.
+end note
+
+note right of UC3
+  Authenticated user enters a color name.
+  System inserts the color into the
+  Colors table linked to the user.
+end note
+
+note right of UC4
+  Authenticated user enters a search term.
+  System queries Colors table using
+  LIKE pattern matching for the user.
+end note
+
+@enduml

@@ -1,0 +1,114 @@
+@startuml Class Diagram
+title COLORS Web Application - Class Diagram
+
+skinparam classAttributeIconSize 0
+
+package "Database Models" {
+    class User {
+        +ID : int <<PK>>
+        +FirstName : string
+        +LastName : string
+        +Login : string
+        +Password : string
+    }
+
+    class Color {
+        +ID : int <<PK>>
+        +Name : string
+        +UserID : int <<FK>>
+    }
+
+    class Contact {
+        +ID : int <<PK>>
+        +FirstName : string
+        +LastName : string
+        +Phone : string
+        +Email : string
+        +UserID : int <<FK>>
+    }
+
+    User "1" --> "0..*" Color : owns
+    User "1" --> "0..*" Contact : owns
+}
+
+package "Backend API (PHP)" {
+    class "config.php\n<<utility>>" as Config {
+        -dbHost : string
+        -dbUser : string
+        -dbPassword : string
+        -dbName : string
+        +getDbConnection() : mysqli
+    }
+
+    class "Login.php\n<<endpoint>>" as LoginAPI {
+        +getRequestInfo() : array
+        +sendResultInfoAsJson(obj : string) : void
+        +returnWithError(err : string) : void
+        +returnWithInfo(id : int, fn : string, ln : string) : void
+    }
+
+    class "AddColor.php\n<<endpoint>>" as AddColorAPI {
+        +getRequestInfo() : array
+        +sendResultInfoAsJson(obj : string) : void
+        +returnWithError(err : string) : void
+    }
+
+    class "SearchColors.php\n<<endpoint>>" as SearchColorsAPI {
+        +getRequestInfo() : array
+        +sendResultInfoAsJson(obj : string) : void
+        +returnWithError(err : string) : void
+        +returnWithInfo(results : string) : void
+    }
+
+    LoginAPI ..> Config : uses
+    AddColorAPI ..> Config : uses
+    SearchColorsAPI ..> Config : uses
+
+    LoginAPI ..> User : queries
+    AddColorAPI ..> Color : inserts
+    SearchColorsAPI ..> Color : queries
+}
+
+package "Frontend (JavaScript)" {
+    class "code.js" as CodeJS {
+        -urlBase : string = "/api"
+        -extension : string = "php"
+        -userId : int
+        -firstName : string
+        -lastName : string
+        +doLogin() : void
+        +doLogout() : void
+        +saveCookie() : void
+        +readCookie() : void
+        +addColor() : void
+        +searchColor() : void
+    }
+
+    class "index.html\n<<view>>" as LoginPage {
+        +loginName : input
+        +loginPassword : input
+        +loginButton : button
+        +loginResult : div
+    }
+
+    class "color.html\n<<view>>" as ColorPage {
+        +userName : span
+        +searchText : input
+        +searchColorButton : button
+        +colorSearchResult : div
+        +colorList : p
+        +colorText : input
+        +addColorButton : button
+        +colorAddResult : div
+        +logoutButton : button
+    }
+
+    LoginPage ..> CodeJS : uses
+    ColorPage ..> CodeJS : uses
+
+    CodeJS ..> LoginAPI : "POST /api/Login.php"
+    CodeJS ..> AddColorAPI : "POST /api/AddColor.php"
+    CodeJS ..> SearchColorsAPI : "POST /api/SearchColors.php"
+}
+
+@enduml
