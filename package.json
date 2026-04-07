@@ -1,0 +1,32 @@
+{
+  "name": "colors",
+  "version": "1.0.0",
+  "description": "Linting and CI configuration for the COLORS web application.",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "htmlhint \"public/**/*.html\"",
+    "lint:css": "stylelint \"public/**/*.css\"",
+    "lint:js": "eslint \"public/js/**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sl2005/COLORS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sl2005/COLORS/issues"
+  },
+  "homepage": "https://github.com/sl2005/COLORS#readme",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}

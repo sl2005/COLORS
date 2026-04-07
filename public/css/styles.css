@@ -1,140 +1,111 @@
-body 
-{
-    background-color: #707070;
+body {
+  background-color: #707070;
 }
 
-#title 
-{
-    font-size: 40px;
-    width: 100%;
-    margin: 2% 5%;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
+#title {
+  width: 100%;
+  margin: 2% 5%;
+  color: #fff;
+  font-family: Ubuntu, sans-serif;
+  font-size: 40px;
+  text-align: center;
 }
 
-#loginDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
+#loginDiv,
+#loggedInDiv,
+#accessUIDiv {
+  width: 70%;
+  margin-left: 15%;
+  padding: 25px;
+  background-color: #b2b2b2;
+  font-size: 30px;
 }
 
-#loggedInDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
+.buttons {
+  width: 50%;
+  margin-left: 25%;
+  border-radius: 25px;
+  font-family: Ubuntu, sans-serif;
+  font-size: 30px;
 }
 
-#accessUIDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
+.buttons:hover {
+  background-color: #00d5124f;
+  color: #fff;
+  opacity: 0.5;
 }
 
-.buttons
-{
-    font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
+#loginName,
+#loginPassword,
+#searchText,
+#colorText {
+  font-size: 30px;
 }
 
-.buttons:hover{
-    background-color: #00d5124f;
-    color: #FFFFFF;
-    opacity: 50%;
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  margin-bottom: 2%;
+  margin-left: 10%;
+  border-radius: 25px;
+  font-family: Ubuntu, sans-serif;
+  text-align: center;
 }
 
-#loginName
-{
-	font-size: 30px;
-}
-#loginPassword
-{
-	font-size: 30px;
-}
-#searchText
-{
-	font-size: 30px;
-}
-#colorText
-{
-	font-size: 30px;
+#inner-title {
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 2%;
+  margin-left: 5%;
+  color: #95060a;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.8em;
+  text-align: center;
 }
 
-input[type="text"],input[type="password"]{
-    border-radius: 25px;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
+#loginResult {
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 2%;
+  margin-left: 5%;
+  color: #95060a;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.8em;
+  text-align: center;
 }
 
-#inner-title{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+#userName {
+  display: inline-block;
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
 }
 
-#loginResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+#logoutButton {
+  width: 20%;
+  margin-left: 40%;
 }
 
-#userName{
-    display: inline-block;
-    width: 80%;
-    margin-left: 10%;
-    text-align: center;
+select {
+  width: 30%;
+  margin-top: 2%;
+  margin-left: 35%;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.75em;
 }
 
-#logoutButton{
-    width: 20%;
-    margin-left: 40%;
+#colorSearchResult {
+  display: none;
 }
 
-select{
-    width: 30%;
-    margin-left: 35%;
-    margin-top: 2%;
-    font-size: 0.75em;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#colorSearchResult{
-    display: none;
-}
-
-#colorAddResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+#colorAddResult {
+  display: inline-block;
+  width: 90%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  margin-left: 5%;
+  color: #95060a;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.8em;
+  text-align: center;
 }

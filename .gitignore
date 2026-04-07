@@ -2,6 +2,8 @@ api/.env
 server-files/
 
 .vscode/
+node_modules/
+package-lock.json
 *.log
 Thumbs.db
 .DS_Store

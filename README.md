@@ -13,6 +13,17 @@ This repository documents and supports the first three project labs:
 - **Database:** MySQL
 - **Backend Runtime:** PHP
 - **Version Control:** Git + GitHub
+- **CI / Lint Tooling:** GitHub Actions, HTMLHint, Stylelint, ESLint
+
+## Frontend Linting and CI
+Node.js is used here only for code-quality tooling, not to run the application itself.
+
+```bash
+npm install
+npm run lint
+```
+
+The workflow in `.github/workflows/lint.yml` runs the same lint command automatically on every push and pull request.
 
 ## Repository Structure
 - **api/**: PHP backend API endpoints and DB configuration.
