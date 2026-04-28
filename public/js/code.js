@@ -1,3 +1,4 @@
+/* global ColorUtils */
 const urlBase = "/api";
 const extension = "php";
 
@@ -97,7 +98,7 @@ function doLogout() {
 }
 
 function addColor() {
-  const newColor = document.getElementById("colorText").value;
+  const newColor = ColorUtils.normalizeColorInput(document.getElementById("colorText").value);
   setElementText("colorAddResult", "");
 
   const payload = { color: newColor, userId };
@@ -140,14 +141,9 @@ function searchColor() {
       if (this.readyState === 4 && this.status === 200) {
         setElementText("colorSearchResult", "Color(s) has been retrieved");
 
-        const jsonObject = JSON.parse(xhr.responseText);
+        const jsonObject = ColorUtils.parseSearchResponse(xhr.responseText);
 
-        for (let i = 0; i < jsonObject.results.length; i += 1) {
-          colorList += jsonObject.results[i];
-          if (i < jsonObject.results.length - 1) {
-            colorList += "<br>\r\n";
-          }
-        }
+        colorList = ColorUtils.formatSearchResults(jsonObject.results);
 
         document.getElementById("colorList").innerHTML = colorList;
       }
